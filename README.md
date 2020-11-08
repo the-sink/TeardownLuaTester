@@ -30,7 +30,7 @@ If you are using tick functions, it is suggested that you add ``ClearTickFunctio
 
 ## **Debugging**
 
-You can use ``print()`` in your code and it will be displayed on the center of the screen when it finishes execution. For example, if you run this code:
+You can use ``print()`` in your code and it will be displayed on the center of the screen when it finishes execution. For example, if you run this:
 ```lua
 print("Hello World!")
 for i=1,10 do
@@ -38,7 +38,7 @@ for i=1,10 do
 end
 print("Goodbye")
 ```
-When the code finishes, you will see a text box in the center pop up with this:
+When it finishes, you will see a text box in the center pop up with this:
 
 ![image](https://i.imgur.com/6dUM7wf.png)
 
