@@ -24,6 +24,8 @@ Just like most other mods, drag the ``data`` folder into your Teardown installat
 
 After installing the mod files, edit ``run.lua`` inside ``Teardown/game``. You can edit this file while in-game, save it, and press the "Execute code" button in the pause menu, and everything should work as expected.
 
+![image](https://i.imgur.com/dTqNMHI.png)
+
 If you are using tick functions, it is suggested that you add ``ClearTickFunctions()`` to the top of your code so that any code executed previously stops. If you have use cases where you need to leave that code running, don't call ``ClearTickFunctions()`` and it should continue to run until you reload the map or exit to the menu.
 
 ## **Debugging**
