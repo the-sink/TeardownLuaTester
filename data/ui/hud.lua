@@ -860,6 +860,50 @@ function toolTutorial()
 	end
 end
 
+-- LuaTester code execution function
+
+function executeTestCode(func, index)
+	local message
+	local override
+	local success, error = pcall(function()
+		local messages = {}
+		print = function(...)
+			table.insert(messages, tostring(...))
+		end
+		AddTickFunction = function(func)
+			if func == nil then return end
+			local i = #tickFunctions
+			table.insert(tickFunctions, func)
+			return i+1
+		end
+		RemoveTickFunction = function(i)
+			if i ~= nil and tickFunctions[i] ~= nil then
+				table.remove(tickFunctions, i)
+				return true
+			end
+		end
+		ClearTickFunctions = function()
+			tickFunctions = {}
+		end
+		OverrideOutputLogTimer = function(len)
+			override = len or nil
+		end
+		func()
+		message = table.concat(messages, "\n")
+	end)
+	if success == false then
+		message = tostring(error)
+		if index ~= nil then
+			table.remove(tickFunctions, index)
+		end
+	end
+	if message ~= "" then
+		runMessage = message
+		runTimer = override or 15
+	end
+end
+
+-------------------------------------
 
 function pauseMenu()
 	local paused = GetBool("game.paused")
@@ -984,39 +1028,9 @@ function pauseMenu()
 			-- LuaTester button/execution code
 
 			if UiTextButton("Execute code", 200, bh) then
-				local message
-				local override
-				local success, error = pcall(function()
-					local messages = {}
-					print = function(...)
-						table.insert(messages, tostring(...))
-					end
-					AddTickFunction = function(func)
-						if func == nil then return end
-						local i = #tickFunctions
-						table.insert(tickFunctions, func)
-						return i+1
-					end
-					RemoveTickFunction = function(i)
-						if i ~= nil and tickFunctions[i] ~= nil then
-							table.remove(tickFunctions, i)
-							return true
-						end
-					end
-					ClearTickFunctions = function()
-						tickFunctions = {}
-					end
-					OverrideOutputLogTimer = function(len)
-						override = len or nil
-					end
+				executeTestCode(function()
 					dofile("data/run.lua")
-					message = table.concat(messages, "\n")
 				end)
-				if success == false then message = tostring(error) end
-				if message ~= "" then
-					runMessage = message
-					runTimer = override or 15
-				end
 				Command("game.unpause")
 			end
 			UiTranslate(0, bh+space)
@@ -1832,8 +1846,8 @@ function draw()
 
 	-- LuaTester execution of tickFunctions
 
-	for _, func in pairs(tickFunctions) do
-		pcall(func)
+	for i, func in pairs(tickFunctions) do
+		executeTestCode(func, i)
 	end
 
 	---------------------------------------
