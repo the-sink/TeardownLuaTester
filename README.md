@@ -5,7 +5,7 @@ This mod allows you to edit a `run.lua` file inside Teardown's data folder and e
 There are a few new API functions accessible in the ``run.lua`` file:
 ```
 Tick:
-- <number FunctionIndex> AddTickFunction(func Calback)
+- <number FunctionIndex> AddTickFunction(func Callback)
 - <bool Success> RemoveTickFunction(number FunctionIndex)
 - <nil> ClearTickFunctions()
 
