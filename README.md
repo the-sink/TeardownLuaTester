@@ -73,7 +73,7 @@ functionThatDoesntExist()
 
 Both of the following code blocks run ``ClearTickFunctions()`` to make sure any previously running hooks created by code in run.lua are stopped.
 
-This code block displays the current player position as a notification until ``ClearTickFunctions()`` is called next. This (and the code block below it) demonstrates use of ``AddTickFunction()``.
+This code block displays the current player position as a text popup until ``ClearTickFunctions()`` is called next. This (and the code block below it) demonstrates use of ``AddTickFunction()``.
 ```lua
 ClearTickFunctions()
 
@@ -85,7 +85,7 @@ AddTickFunction(function()
     local pos = GetPlayerTransform().pos
     local str = "X: ".. Round(pos[1]).."\nY: ".. Round(pos[2]) .."\nZ: ".. Round(pos[3])
     UiPush()
-        UiTranslate(UiCenter(), 150)
+        UiTranslate(UiCenter(), 200)
         UiAlign("center middle")
 
         UiFont("font/bold.ttf", 24)
@@ -98,7 +98,7 @@ AddTickFunction(function()
 end)
 ```
 
-The following code block will display a timer at the top of your screen for 5 seconds, and will respawn your character after the time has finished. This demonstrates assigning ``AddTickFunction()`` to a variable (which produces a number index), and use of ``RemoveTickFunction()`` on that variable.
+The following code block will display a timer at the top of your screen for 5 seconds (as a notification), and will respawn your character after the time has finished. This demonstrates assigning ``AddTickFunction()`` to a variable (which produces a number index), and use of ``RemoveTickFunction()`` on that variable.
 ```lua
 ClearTickFunctions()
 
