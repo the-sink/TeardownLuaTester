@@ -17,6 +17,38 @@ After installing the mod files, edit ``run.lua`` inside ``Teardown/game``. You c
 
 If you are using tick functions, it is suggested that you add ``ClearTickFunctions()`` to the top of your code so that any code executed previously stops. If you have use cases where you need to leave that code running, don't call ``ClearTickFunctions()`` and it should continue to run until you reload the map or exit to the menu.
 
+## **Debugging**
+
+You can use ``print()`` in your code and it will be displayed on the center of the screen when it finishes execution. For example, if you run this code:
+```lua
+print("Hello World!")
+for i=1,10 do
+    print(i)
+end
+print("Goodbye")
+```
+When the code finishes, you will see a text box in the center pop up with this:
+
+![image](https://i.imgur.com/6dUM7wf.png)
+
+If there was an error in your code, for example:
+```lua
+local a
+for i=1,a do -- hmm, but 'a' is nil?
+    print(i)
+end
+```
+
+![image](https://i.imgur.com/B8W3XRk.png)
+
+```lua
+print("Cool script")
+functionThatDoesntExist()
+```
+
+![image](https://i.imgur.com/QkaYYpC.png)
+
+
 ## **Example code**
 
 Both of the following code blocks run ``ClearTickFunctions()`` to make sure any previously running hooks created by code in run.lua are stopped.
