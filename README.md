@@ -1,4 +1,4 @@
-# TeardownLuaTester
+# Teardown Lua Tester
 
 Also on [TeardownMods](https://teardownmods.com/index.php?/file/109-teardown-lua-tester/).
 
@@ -77,13 +77,13 @@ Both of the following code blocks run ``ClearTickFunctions()`` to make sure any 
 
 This code block displays the current player position as a text popup until ``ClearTickFunctions()`` is called next. This (and the code block below it) demonstrates use of ``AddTickFunction()``.
 ```lua
-ClearTickFunctions()
+ClearTickFunctions() -- Clear any currently running code from previous executions
 
 function Round(n)
     return math.floor(n*1000)/1000
 end
 
-AddTickFunction(function()
+AddTickFunction(function() -- Anonymously (not assigning to a variable) adds a function to be executed every draw()
     local pos = GetPlayerTransform().pos
     local str = "X: ".. Round(pos[1]).."\nY: ".. Round(pos[2]) .."\nZ: ".. Round(pos[3])
     UiPush()
@@ -102,13 +102,13 @@ end)
 
 The following code block will display a timer at the top of your screen for 5 seconds (as a notification), and will respawn your character after the time has finished. This demonstrates assigning ``AddTickFunction()`` to a variable (which produces a number index), and use of ``RemoveTickFunction()`` on that variable.
 ```lua
-ClearTickFunctions()
+ClearTickFunctions() -- Clear any currently running code from previous executions
 
 local clock = 1
 local timeRemaining = 5
-local func
+local func -- Declares a variable for the function beforehand so it can be used inside AddTickFunction()
 
-func = AddTickFunction(function()
+func = AddTickFunction(function() -- Assigns "func" to the output of AddTickFunction(), which will be a number index representing that function's spot in the array.
     clock = clock - GetTimeStep()
     if clock < 0 then
         clock = 1
@@ -117,7 +117,7 @@ func = AddTickFunction(function()
         timeRemaining = timeRemaining - 1
         if timeRemaining < 0 then
             Command("game.respawn")
-            RemoveTickFunction(func)
+            RemoveTickFunction(func) -- Removes the tick function based on it's index.
         end
     end
 end)
