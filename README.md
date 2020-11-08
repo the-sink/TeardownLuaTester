@@ -4,12 +4,17 @@ This mod allows you to edit a `run.lua` file inside Teardown's data folder and e
 
 There are a few new API functions accessible in the ``run.lua`` file:
 ```
+Tick:
 - <number FunctionIndex> AddTickFunction(func Calback)
 - <bool Success> RemoveTickFunction(number FunctionIndex)
 - <nil> ClearTickFunctions()
+
+Debugging/misc:
+- <nil> OverrideOutputLogTimer(number Length)
 ```
 
 With this API, you can hook functions into the ``hud.lua``'s ``draw()`` function meaning you can externally draw UI and run other tasks that can't be executed immediately.
+As well as that, ``OverrideOutputLogTimer()`` lets you modify how long the output log will display on the screen (default is 15 seconds).
 
 ## **How to use**
 
@@ -48,6 +53,14 @@ functionThatDoesntExist()
 
 ![image](https://i.imgur.com/QkaYYpC.png)
 
+
+## **Future plans/ideas**
+
+- Changes to the output log system
+    - Switch to using a string "buffer" that displays log messages as they arrive
+    - Track output log information for tick functions (currently only supports the main thread)
+- Better UI for output logging/ability to view previous messages
+- Execute all in a folder instead of just one file (``run.lua``)
 
 ## **Example code**
 
