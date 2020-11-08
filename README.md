@@ -24,7 +24,7 @@ Just like most other mods, drag the ``data`` folder into your Teardown installat
 
 ## **How to use**
 
-After installing the mod files, edit ``run.lua`` inside ``Teardown/game``. You can edit this file while in-game, save it, and press the "Execute code" button in the pause menu, and everything should work as expected.
+After installing the mod files, edit ``run.lua`` inside ``Teardown/data``. You can edit this file while in-game, save it, and press the "Execute code" button in the pause menu, and everything should work as expected.
 
 ![image](https://i.imgur.com/dTqNMHI.png)
 
