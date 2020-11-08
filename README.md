@@ -16,6 +16,10 @@ Debugging/misc:
 With this API, you can hook functions into the ``hud.lua``'s ``draw()`` function meaning you can externally draw UI and run other tasks that can't be executed immediately.
 As well as that, ``OverrideOutputLogTimer()`` lets you modify how long the output log will display on the screen (default is 15 seconds).
 
+## **Installation**
+
+Just like most other mods, drag the ``data`` folder into your Teardown installation directory. If other mods modify the ``hud.lua`` file, this one **will** conflict with it.
+
 ## **How to use**
 
 After installing the mod files, edit ``run.lua`` inside ``Teardown/game``. You can edit this file while in-game, save it, and press the "Execute code" button in the pause menu, and everything should work as expected.
