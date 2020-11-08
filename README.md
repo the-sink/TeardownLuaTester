@@ -11,13 +11,13 @@ There are a few new API functions accessible in the ``run.lua`` file:
 
 With this API, you can hook functions into the ``hud.lua``'s ``draw()`` function meaning you can externally draw UI and run other tasks that can't be executed immediately.
 
-**How to use:**
+## **How to use**
 
 After installing the mod files, edit ``run.lua`` inside ``Teardown/game``. You can edit this file while in-game, save it, and press the "Execute code" button in the pause menu, and everything should work as expected.
 
 If you are using tick functions, it is suggested that you add ``ClearTickFunctions()`` to the top of your code so that any code executed previously stops. If you have use cases where you need to leave that code running, don't call ``ClearTickFunctions()`` and it should continue to run until you reload the map or exit to the menu.
 
-**Example code:**
+## **Example code**
 
 Both of the following code blocks run ``ClearTickFunctions()`` to make sure any previously running hooks created by code in run.lua are stopped.
 
