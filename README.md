@@ -66,7 +66,7 @@ functionThatDoesntExist()
 
 - Changes to the output log system
     - Switch to using a string "buffer" that displays log messages as they arrive
-    - Track output log information for tick functions (currently only supports the main thread)
+    - ~~Track output log information for tick functions (currently only supports the main thread)~~ ✅ Added in 1.0.1
 - Better UI for output logging/ability to view previous messages
 - Execute all in a folder instead of just one file (``run.lua``)
 - Clean up the code added to ``hud.lua`` (maybe separate it into it's own file?)
