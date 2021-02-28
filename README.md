@@ -1,3 +1,5 @@
+**This repository has been archived due to the addition of new official modding tools into Teardown.**
+
 # Teardown Lua Tester
 
 Also on [TeardownMods](https://teardownmods.com/index.php?/file/109-teardown-lua-tester/).
